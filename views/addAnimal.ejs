@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Users server </title>
+    </head>
+    <body>
+        <h1>
+            Wellcome
+        </h1>
+            Add a new animal:
+        </h2>
+        <form method="POST" action="/animals/new">
+            <div>
+                <label for="animalName">
+                    Animal Name: 
+                </label>
+                <input type="text" id="animalName" name="animalName" />
+            </div>
+            <div>
+                <label for="animalInformation">
+                    Animal Information: 
+                </label>
+                <textarea type="text" id="animalInformation" name="animalInformation" placeholder="Add some information about this animal"></textarea>
+            </div>
+            <div>
+                <label for="animalId">
+                    Id: 
+                </label>
+                <input placeholder="Please add an ID to this animal" type="number" id="animalId" name="animalId" />
+            </div>
+            <button type="submit">
+                Add Animal
+            </button>
+        </form>
+    </body>
+</html>
