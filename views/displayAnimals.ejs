@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    </head>
+    <body>
+        <main>
+            <div style="display: flex; flex-direction: column;">
+                <h1>
+                    All Animals in this zoo
+                </h1>
+                <a href="/animals/new" style="margin-bottom: 2%;">
+                    Go an add a new animal to this zoo
+                </a>
+                <div style="display: flex; flex-direction: column; border: 3px solid black;
+                justify-content: space-around; text-align: center;">
+                    <% for(const animal of animals ) {%>
+                        <h2>
+                            Animal: <%= animal.animalName %>
+                        </h2>
+                        <!--
+                            <p>
+                                Id: <%= animal.animalId %>
+                            </p>
+                            <p>
+                                Information: "<%= animal.animalInformation %>"
+                            </p>
+                        -->
+                        <a href="/animals/<%= animal.animalId %>"> More Information > </a>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

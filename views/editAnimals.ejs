@@ -4,38 +4,30 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Add Animal </title>
+        <title> Edit Animal Information </title>
     </head>
     <body>
-        <h1>
-            Wellcome
-        </h1>
-            Add a new animal
+        <h2>
+            Edit animal
         </h2>
         <br>
-        <form method="POST" action="/animals" 
+        <form method="POST" action="/animals/<%= animal.animalId %>" 
         style="display: flex; flex-direction: column; justify-content: center;
         align-content: center;align-items: center;">
             <div>
                 <label for="animalName">
                     Animal Name: 
                 </label>
-                <input type="text" id="animalName" name="animalName" />
+                <input type="text" id="animalName" name="animalName" value="<%= animal.animalName %>"/>
             </div>
             <div>
                 <label for="animalInformation">
                     Animal Information: 
                 </label>
-                <textarea type="text" id="animalInformation" name="animalInformation" placeholder="Add some information about this animal"></textarea>
-            </div>
-            <div>
-                <label for="animalId">
-                    Id: 
-                </label>
-                <input placeholder="Please add an ID to this animal" type="number" id="animalId" name="animalId" />
+                <textarea type="text" id="animalInformation" name="animalInformation" placeholder=""><%= animal.animalInformation %></textarea>
             </div>
             <button type="submit">
-                Add Animal
+                Edit Info
             </button>
         </form>
     </body>

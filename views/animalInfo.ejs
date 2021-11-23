@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Animal Information </title>
+    </head>
+    <body>
+        <h1>
+            Welcome
+        </h1>
+        <h3>
+            Look at this!
+        </h3>
+        <br>
+        <div style="display: flex; flex-direction: column; justify-content: center;
+        align-content: center;align-items: center;">
+            <h2>
+                Animal: <%= animal.animalName %>
+            </h2>
+            <p>
+                Id: <%= animal.animalId %>
+            </p>
+            <p>
+                Information: "<%= animal.animalInformation %>"
+            </p>
+            <div style="display: flex; flex-direction: row; justify-content: space-around;">
+                <a href="/" >
+                    Go Home >
+                </a>
+                <a href="/animals/edit/<%= animal.animalId %>" >
+                    Edit Information >
+                </a>
+            </div>
+            
+        </div>
+    </body>
+</html>

@@ -11,19 +11,10 @@ app.use( express.urlencoded({extended:true}) );
 
 app.get( '/', function( request, response ){
     AnimalModel
-        .getAnimals()
+        .getAllAnimals()
         .then( data => {
             console.log( data );
-            response.render( 'index', { users : data } );
-        });  
-});
-
-app.get( '/', function( request, response ){
-    AnimalModel
-        .getAnimals()
-        .then( data => {
-            console.log( data );
-            response.render( 'index', { users : data } );
+            response.render( 'displayAnimals', { animals : data } );
         });  
 });
 
@@ -31,7 +22,7 @@ app.get( '/animals/new', function( request, response ){
     response.render( 'addAnimal' );
 });
 
-app.post( '/animals/new', function( request, response ){
+app.post( '/animals', function( request, response ){
     console.log( request.body );
     const animalId = Number(request.body.animalId);
     const animalName = request.body.animalName;
@@ -46,6 +37,50 @@ app.post( '/animals/new', function( request, response ){
     console.log("Data from the form: " + newAnimal );
     AnimalModel
         .insertAnimal( newAnimal )
+        .then( result => {
+            console.log("Result Catch: " + result );
+        })
+        .catch( err => {
+            console.log( "Something went wrong!" );
+            console.log( err );
+        })
+
+    response.redirect( '/' );
+});
+
+app.get( '/animals/:animalId', function( request, response ){
+    var id = request.params.animalId;
+    AnimalModel
+        .getAnimalById(id)
+        .then( data => {
+            console.log( data );
+            response.render( 'animalinfo', { animal : data } );
+        });  
+});
+
+app.get( '/animals/edit/:animalId', function( request, response ){
+    var id = request.params.animalId;
+    AnimalModel
+        .getAnimalById(id)
+        .then( data => {
+            console.log( data );
+            response.render( 'editAnimals', { animal : data } );
+        });  
+});
+
+app.post( '/animals/:animalId', function( request, response ){
+    console.log( request.body );
+    const animalName = request.body.animalName;
+    const animalInformation = request.body.animalInformation;
+
+    // Run validations to see if the 'id' is not already in the list
+    const newAnimal = {
+        animalName,
+        animalInformation
+    };
+    console.log("Data from the edit form: " + newAnimal );
+    AnimalModel
+        .updateAnimalInfo( newAnimal )
         .then( result => {
             console.log("Result Catch: " + result );
         })

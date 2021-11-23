@@ -30,7 +30,10 @@ const AnimalModel = {
         return Animal.find();
     },
     getAnimalById : function( animalId ){
-        return Animal.findOne({ id : animalId });
+        return Animal.findOne({ animalId : animalId });
+    },
+    updateAnimalInfo : function(animalId){
+        return Animal.updateOne({ animalId : animalId });
     }
 };
 
