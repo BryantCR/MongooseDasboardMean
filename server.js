@@ -70,6 +70,7 @@ app.get( '/animals/edit/:animalId', function( request, response ){
 
 app.post( '/animals/:animalId', function( request, response ){
     console.log( request.body );
+    var id = request.params.animalId;
     const animalName = request.body.animalName;
     const animalInformation = request.body.animalInformation;
 
@@ -80,7 +81,7 @@ app.post( '/animals/:animalId', function( request, response ){
     };
     console.log("Data from the edit form: " + newAnimal );
     AnimalModel
-        .updateAnimalInfo( newAnimal )
+        .updateAnimalInfo( id, newAnimal )
         .then( result => {
             console.log("Result Catch: " + result );
         })
@@ -88,7 +89,22 @@ app.post( '/animals/:animalId', function( request, response ){
             console.log( "Something went wrong!" );
             console.log( err );
         })
+    response.redirect( '/' );
+});
 
+app.post( '/destroy/:animalId', function( request, response ){
+    console.log( request.body );
+    var id = request.params.animalId;
+
+    AnimalModel
+        .delete( id )
+        .then( result => {
+            console.log("Result Catch: " + result );
+        })
+        .catch( err => {
+            console.log( "Something went wrong!" );
+            console.log( err );
+        })
     response.redirect( '/' );
 });
 

@@ -32,8 +32,14 @@ const AnimalModel = {
     getAnimalById : function( animalId ){
         return Animal.findOne({ animalId : animalId });
     },
-    updateAnimalInfo : function(animalId){
-        return Animal.updateOne({ animalId : animalId });
+    updateAnimalInfo : function(animalId, newAnimal){
+        return Animal.updateOne({ animalId : animalId }, newAnimal);
+    },
+    updateAnimalInfo2 : function(animalId, animalName){
+        return Animal.db.animals.update({animalId: animalId},{$set:{ animalName : animalName }});
+    },
+    delete : function( animalId ){
+        return Animal.deleteOne({ animalId : animalId });
     }
 };
 
