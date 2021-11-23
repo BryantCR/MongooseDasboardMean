@@ -27,6 +27,10 @@ app.get( '/', function( request, response ){
         });  
 });
 
+app.get( '/animals/new', function( request, response ){
+    response.render( 'addAnimal' );
+});
+
 app.post( '/animals/new', function( request, response ){
     console.log( request.body );
     const animalId = Number(request.body.animalId);
@@ -41,7 +45,7 @@ app.post( '/animals/new', function( request, response ){
     };
     console.log("Data from the form: " + newAnimal );
     AnimalModel
-        .createUser( newAnimal )
+        .insertAnimal( newAnimal )
         .then( result => {
             console.log("Result Catch: " + result );
         })
