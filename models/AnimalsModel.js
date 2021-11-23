@@ -39,7 +39,7 @@ const AnimalModel = {
         return Animal.db.animals.update({animalId: animalId},{$set:{ animalName : animalName }});
     },
     delete : function( animalId ){
-        return Animal.deleteOne({ animalId : animalId });
+        return Animal.remove({ animalId : animalId });
     }
 };
 

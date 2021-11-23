@@ -93,9 +93,7 @@ app.post( '/animals/:animalId', function( request, response ){
 });
 
 app.post( '/destroy/:animalId', function( request, response ){
-    console.log( request.body );
     var id = request.params.animalId;
-
     AnimalModel
         .delete( id )
         .then( result => {
@@ -105,7 +103,7 @@ app.post( '/destroy/:animalId', function( request, response ){
             console.log( "Something went wrong!" );
             console.log( err );
         })
-    response.redirect( '/' );
+        response.redirect( '/' );
 });
 
 app.listen( 8080, function(){

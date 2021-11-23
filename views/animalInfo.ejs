@@ -32,9 +32,12 @@
                 <a href="/animals/edit/<%= animal.animalId %>" >
                     Edit Information >
                 </a>
-                <a href="/destroy/<%= animal.animalId %>" >
-                    Delete Animal >
-                </a>
+                <form method="POST" action="/destroy/<%= animal.animalId %>">
+                    <button type="submit">
+                        Delete Animal >
+                    </button>
+                </form>
+                
             </div>
             
         </div>
